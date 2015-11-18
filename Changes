@@ -1,5 +1,13 @@
 Revision history for URL-Check
 
-0.01    Date/time
-        First version, released on an unsuspecting world.
+0.03   Wed Nov 18 10:25:00 2015 MANWAR
+       - Tidied up Makefile.PL script.
+       - Removed Build.PL script.
+       - Tidied up README file.
+       - Added github repository to the Makefile.PL file.
 
+0.02   2011-10-02 ALEXMASS
+       - Some more changes.
+
+0.01   2011-10-02 ALEXMASS
+       -  First version, released on an unsuspecting world.
