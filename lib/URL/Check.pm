@@ -13,11 +13,11 @@ URL::Check - check a list of url and react (emails etc.) in case of failures
 
 =head1 VERSION
 
-Version 0.02
+Version 0.03
 
 =cut
 
-our $VERSION = '0.02';
+our $VERSION = '0.03';
 
 
 =head1 SYNOPSIS
@@ -30,7 +30,7 @@ If no --config argument is set, the value is taken from environment variable URL
 
 more examples can be found in the t/resources/config directory but consist in default parameter (mailto etc., then each url to be tested can be followed by dedicated test (time.delay, xpath etc.)
 
-More info can be found on http://alexandre-masselot.blogspot.com/2011/10/perl-url-checker.html 
+More info can be found on http://alexandre-masselot.blogspot.com/2011/10/perl-url-checker.html
 
 =head1 SUBROUTINES/METHODS
 
@@ -73,7 +73,7 @@ sub readConfig{
     }
     die "cannot parse line: $line";
   }
-  
+
 }
 
 #private method to add an onerror line from the config file
@@ -106,14 +106,14 @@ sub p_addCheckLine{
     push @{ $conf->{check}{contains}}, $params ;
     return;
   }
-  
+
   $conf->{check}{$cat}=$params
 }
 
 
 sub p_addUrl{
   my $line = shift;
-  
+
   my $h = {
 	   url =>$line,
 	   check => {}
@@ -141,7 +141,7 @@ Run the configured tests, and store the result into the local @report
 
 sub run{
   undef @report;
-  
+
   foreach my $urlConfig (@{$config{urls}}) {
     push @report, p_runOneUrl($urlConfig);
   }
@@ -154,7 +154,7 @@ sub p_runOneUrl{
 
   my ($sec0, $micros0) = gettimeofday;
   my $content = get($url);
-  
+
   unless($content){
     return {
 	    url => $url,
@@ -172,7 +172,7 @@ sub p_runOneUrl{
 	    success => 0,
 	    message => "overtime > $urlConfig{check}{overtime} (${dtime}ms)",
 	   }
-    
+
   }
 
   if (exists $urlConfig{check}{contains}) {
@@ -184,7 +184,7 @@ sub p_runOneUrl{
 		success => 0,
 		message => "does not contains \"$_\"",
 	       }
-	
+
       }
     }
   }
@@ -208,7 +208,7 @@ sub errorReport{
   unless(@errors){
     return ();
   }
-  
+
   (
    subject => ''.scalar(@errors).' errors reported',
    contents => join("\n", (map {$_->{url}." : ".$_->{message}} @errors))
