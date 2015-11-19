@@ -10,6 +10,7 @@ WriteMakefile(
     AUTHOR             => q{Alexandre Masselot <alexmass@cpan.org>},
     VERSION_FROM       => 'lib/URL/Check.pm',
     ABSTRACT_FROM      => 'lib/URL/Check.pm',
+    LICENSE            => 'artistic_2',
     MIN_PERL_VERSION   => 5.006,
     CONFIGURE_REQUIRES => {
         'ExtUtils::MakeMaker' => 0,
@@ -36,5 +37,4 @@ WriteMakefile(
         }})
      : ()
     ),
-
 );

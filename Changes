@@ -1,5 +1,12 @@
 Revision history for URL-Check
 
+0.04   Thu Nov 19 10:30:00 2015 MANWAR
+       - Added LICENSE file.
+       - Added key 'LICENSE' to the Makefile.PL
+       - Added section "REPOSITORY" to the pod document.
+       - Added section "MAINTAINER" to the pod document.
+       - General tidied up pod document.
+
 0.03   Wed Nov 18 10:25:00 2015 MANWAR
        - Tidied up Makefile.PL script.
        - Removed Build.PL script.
