@@ -6,7 +6,7 @@ URL::Check - Check a list of URL and react (emails etc.) in case of failures.
 
 =head1 VERSION
 
-Version 0.04
+Version 0.05
 
 =cut
 
@@ -16,15 +16,15 @@ use strict; use warnings;
 use LWP::Simple qw/get/;
 use Time::HiRes qw /gettimeofday/;
 
-our $VERSION = '0.04';
+our $VERSION = '0.05';
 
 =head1 DESCRIPTION
 
-This module is not aimed at being used directly but via the script C<url-check.pl>.
+This module is not aimed at being used directly but via the script C<url-check>.
 
-    url-check.pl --config=my-config.txt
+    url-check --config=my-config.txt
 
-If no --config argument is set, the value is taken from environment variable C<URL_CHECK_CONFIG>.
+If no C<--config argument> is set, the value is taken from environment variable C<URL_CHECK_CONFIG>.
 
 More examples can be found in the C<t/resources/config> directory but consist
 in default parameter (mailto etc., then each url to be tested can be followed

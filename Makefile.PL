@@ -11,6 +11,7 @@ WriteMakefile(
     VERSION_FROM       => 'lib/URL/Check.pm',
     ABSTRACT_FROM      => 'lib/URL/Check.pm',
     LICENSE            => 'artistic_2',
+    EXE_FILES          => [ 'script/url-check' ],
     MIN_PERL_VERSION   => 5.006,
     CONFIGURE_REQUIRES => {
         'ExtUtils::MakeMaker' => 0,
