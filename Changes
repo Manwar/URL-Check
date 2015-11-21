@@ -1,4 +1,10 @@
-Revision history for URL-Check
+Revision history for URL::Check
+
+0.06   Sat Nov 21 11:20:00 2015 MANWAR
+       - Added $AUTHORITY to the package URL::Check.
+       - Added key 'provides' to the Makefile.PL script.
+       - Added LICENSE to the MANIFEST file.
+       - Removed 'Test::More' from prereqs list in the Makefile.PL script.
 
 0.05   Fri Nov 20 12:55:00 2015 MANWAR
        - Copied 'script/url-check.pl' and created another called 'script/url-check'.

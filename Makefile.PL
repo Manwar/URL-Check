@@ -12,6 +12,7 @@ WriteMakefile(
     ABSTRACT_FROM      => 'lib/URL/Check.pm',
     LICENSE            => 'artistic_2',
     EXE_FILES          => [ 'script/url-check' ],
+    PL_FILES           => {},
     MIN_PERL_VERSION   => 5.006,
     CONFIGURE_REQUIRES => {
         'ExtUtils::MakeMaker' => 0,
@@ -20,7 +21,6 @@ WriteMakefile(
         'Test::More' => 0,
     },
     PREREQ_PM        => {
-        'Test::More'     => 0,
         'Mail::Sendmail' => 0,
         'Time::HiRes'    => 0,
         'LWP::Simple'    => 0
@@ -29,7 +29,8 @@ WriteMakefile(
     clean => { FILES => 'URL-Check-*' },
     (eval { ExtUtils::MakeMaker->VERSION(6.46) } ? (META_MERGE => {
         'meta-spec' => { version => 2 },
-        resources => {
+        provides    => { 'URL::Check' => { file => 'lib/URL/Check.pm', version => '0.06' } },
+        resources   => {
             repository => {
                 type => 'git',
                 url  => 'https://github.com/manwar/URL-Check.git',

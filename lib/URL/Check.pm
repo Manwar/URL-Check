@@ -1,12 +1,15 @@
 package URL::Check;
 
+$URL::Check::VERSION   = '0.06';
+$URL::Check::AUTHORITY = 'cpan:ALEXMASS';
+
 =head1 NAME
 
 URL::Check - Check a list of URL and react (emails etc.) in case of failures.
 
 =head1 VERSION
 
-Version 0.05
+Version 0.06
 
 =cut
 
@@ -15,8 +18,6 @@ use strict; use warnings;
 
 use LWP::Simple qw/get/;
 use Time::HiRes qw /gettimeofday/;
-
-our $VERSION = '0.05';
 
 =head1 DESCRIPTION
 
@@ -43,7 +44,7 @@ Read the config file. Default file name is taken from C<$URL_CHECK_FILE>
 our %config;
 our @report;
 
-sub readConfig{
+sub readConfig {
     my $configFile = shift || $ENV{URL_CHECK_CONFIG}
     || die "ERROR: No config file is passed or env URL_CHECK_CONFIG is set.\n";
 
@@ -88,32 +89,12 @@ Run the configured tests, and store the result into the local @report
 
 =cut
 
-sub run{
+sub run {
 
     undef @report;
     foreach my $urlConfig (@{$config{urls}}) {
       push @report, p_runOneUrl($urlConfig);
     }
-}
-
-=head2 errorReport()
-
-Build a map (subject => ..., content=> ...) with the errors after the run
-return () if no error were detected
-
-=cut
-
-sub errorReport{
-    my @errors = grep {! $_->{success}} @report;
-
-    unless(@errors){
-        return ();
-    }
-
-    (
-     subject  => ''.scalar(@errors).' errors reported',
-     contents => join("\n", (map {$_->{url}." : ".$_->{message}} @errors))
-    );
 }
 
 =head2 submitReport(%report)
@@ -122,7 +103,7 @@ Print on console or send by mail the error output
 
 =cut
 
-sub submitReport{
+sub submitReport {
     my %report = @_;
 
     if ($config{default}{onError}{console}) {
@@ -145,11 +126,31 @@ sub submitReport{
     }
 }
 
+=head2 errorReport()
+
+Build a map (subject => ..., content=> ...) with the errors after the run
+return () if no error were detected
+
+=cut
+
+sub errorReport {
+    my @errors = grep {! $_->{success}} @report;
+
+    unless (@errors) {
+        return ();
+    }
+
+    (
+     subject  => ''.scalar(@errors).' errors reported',
+     contents => join("\n", (map {$_->{url}." : ".$_->{message}} @errors))
+    );
+}
+
 #
 #
 # PRIVATE METHODS
 
-sub p_addOnErrorLine{
+sub p_addOnErrorLine {
     my ($line, $conf) = @_;
 
     die "ERROR: Cannot parse error line: $line"
@@ -171,7 +172,7 @@ sub p_addOnErrorLine{
     die "ERROR: Unknown onerror type [$errorCat]\n";
 }
 
-sub p_addCheckLine{
+sub p_addCheckLine {
     my ($line, $conf) = @_;
 
     die "ERROR: Cannot parse error line: $line\n"
@@ -184,21 +185,22 @@ sub p_addCheckLine{
         return;
     }
 
-    $conf->{check}{$cat}=$params
+    $conf->{check}{$cat} = $params
 }
 
-sub p_addUrl{
+sub p_addUrl {
     my ($line) = @_;
 
     my $h = {
-        url =>$line,
+        url   => $line,
         check => {}
     };
+
     push @{$config{urls}}, $h;
     return $h;
 }
 
-sub p_clearConfig{
+sub p_clearConfig {
 
     %config = (
         default => { onError=>{} },
@@ -206,14 +208,14 @@ sub p_clearConfig{
     );
 }
 
-sub p_runOneUrl{
+sub p_runOneUrl {
     my %urlConfig = %{$_[0]};
 
     my $url              = $urlConfig{url};
     my ($sec0, $micros0) = gettimeofday;
     my $content          = get($url);
 
-    unless($content){
+    unless ($content) {
         return {
 	    url     => $url,
 	    success => 0,
@@ -224,7 +226,7 @@ sub p_runOneUrl{
     my ($sec1, $micros1) = gettimeofday;
     my $dtime = int(($sec1-$sec0)*1000 + ($micros1-$micros0)/1000);
 
-    if ((exists $urlConfig{check}{overtime}) &&  ($urlConfig{check}{overtime}<$dtime)) {
+    if ((exists $urlConfig{check}{overtime}) &&  ($urlConfig{check}{overtime} < $dtime)) {
         return {
 	    url     => $url,
 	    success => 0,
@@ -254,8 +256,6 @@ sub p_runOneUrl{
 =head1 AUTHOR
 
 Alexandre Masselot, C<< <alexandre.masselot at gmail.com> >>
-
-=head1 MAINTAINER
 
 Currently maintained by Mohammad S Anwar (MANWAR) C<< <mohammad.anwar @ yahoo.com> >>
 
