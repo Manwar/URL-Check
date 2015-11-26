@@ -1,5 +1,11 @@
 Revision history for URL::Check
 
+0.08   Thu Nov 26 10:40:00 2015 MANWAR
+       - Enable warning check in the unit test script t/02-test-to-console.t.
+         Also changed slightly how the STDOUT is captured as some CPAN Tester
+         reporting error on amd64-netbsd as below:
+         http://www.cpantesters.org/cpan/report/8a4733de-9220-11e5-afef-e7dd1d056eec
+
 0.07   Sat Nov 21 11:40:00 2015 MANWAR
        - Tidied up script/url-check script.
 

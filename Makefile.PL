@@ -29,7 +29,7 @@ WriteMakefile(
     clean => { FILES => 'URL-Check-*' },
     (eval { ExtUtils::MakeMaker->VERSION(6.46) } ? (META_MERGE => {
         'meta-spec' => { version => 2 },
-        provides    => { 'URL::Check' => { file => 'lib/URL/Check.pm', version => '0.07' } },
+        provides    => { 'URL::Check' => { file => 'lib/URL/Check.pm', version => '0.08' } },
         resources   => {
             repository => {
                 type => 'git',
