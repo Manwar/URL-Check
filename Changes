@@ -1,5 +1,9 @@
 Revision history for URL::Check
 
+0.09   Mon Nov 30 11:00:00 2015 MANWAR
+       - Earlier fix didn't resolve the issue, so one more attempt to resolve it,
+         using module Capture::Tiny.
+
 0.08   Thu Nov 26 10:40:00 2015 MANWAR
        - Enable warning check in the unit test script t/02-test-to-console.t.
          Also changed slightly how the STDOUT is captured as some CPAN Tester

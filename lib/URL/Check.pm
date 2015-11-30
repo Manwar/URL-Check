@@ -1,6 +1,6 @@
 package URL::Check;
 
-$URL::Check::VERSION   = '0.08';
+$URL::Check::VERSION   = '0.09';
 $URL::Check::AUTHORITY = 'cpan:ALEXMASS';
 
 =head1 NAME
@@ -9,7 +9,7 @@ URL::Check - Check a list of URL and react (emails etc.) in case of failures.
 
 =head1 VERSION
 
-Version 0.08
+Version 0.09
 
 =cut
 

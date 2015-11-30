@@ -2,6 +2,7 @@ use strict; use warnings;
 use Test::More tests => 5;
 
 use URL::Check;
+use Capture::Tiny ':all';
 use File::Basename qw/dirname/;
 
 # Check simple config with errors
@@ -14,19 +15,12 @@ URL::Check::run();
 my %report = URL::Check::errorReport();
 ok(%report, "error report is not empty");
 
-my $output;
-do {
-   local *STDOUT;
-   open STDOUT, ">>", \$output or die "ERROR: Cannot redirect STDOUT to variable\n";
-   URL::Check::submitReport(%report);
-};
-
 my $expected = <<EOT;
 ERROR REPORT: 2 errors reported
 http://aaa.bbb.ccc.ddd : cannot load content
 http://zzz.yyy.xxx.www : cannot load content
 EOT
-is($output, $expected, "check console output");
+is(capture_stdout { URL::Check::submitReport(%report) }, $expected, "check console output");
 
 # Check simple with no error
 $configFile = "t/resources/config/toconsole.txt";

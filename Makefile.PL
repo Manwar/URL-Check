@@ -17,10 +17,11 @@ WriteMakefile(
     CONFIGURE_REQUIRES => {
         'ExtUtils::MakeMaker' => 0,
     },
-    BUILD_REQUIRES   => {
-        'Test::More' => 0,
+    BUILD_REQUIRES      => {
+        'Test::More'    => 0,
+        'Capture::Tiny' => '0.28',
     },
-    PREREQ_PM        => {
+    PREREQ_PM            => {
         'Mail::Sendmail' => 0,
         'Time::HiRes'    => 0,
         'LWP::Simple'    => 0
@@ -29,7 +30,7 @@ WriteMakefile(
     clean => { FILES => 'URL-Check-*' },
     (eval { ExtUtils::MakeMaker->VERSION(6.46) } ? (META_MERGE => {
         'meta-spec' => { version => 2 },
-        provides    => { 'URL::Check' => { file => 'lib/URL/Check.pm', version => '0.08' } },
+        provides    => { 'URL::Check' => { file => 'lib/URL/Check.pm', version => '0.09' } },
         resources   => {
             repository => {
                 type => 'git',
