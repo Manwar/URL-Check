@@ -12,7 +12,6 @@ WriteMakefile(
     ABSTRACT_FROM      => 'lib/URL/Check.pm',
     LICENSE            => 'artistic_2',
     EXE_FILES          => [ 'script/url-check' ],
-    PL_FILES           => {},
     MIN_PERL_VERSION   => 5.006,
     CONFIGURE_REQUIRES => {
         'ExtUtils::MakeMaker' => 0,
@@ -30,7 +29,7 @@ WriteMakefile(
     clean => { FILES => 'URL-Check-*' },
     (eval { ExtUtils::MakeMaker->VERSION(6.46) } ? (META_MERGE => {
         'meta-spec' => { version => 2 },
-        provides    => { 'URL::Check' => { file => 'lib/URL/Check.pm', version => '0.09' } },
+        provides    => { 'URL::Check' => { file => 'lib/URL/Check.pm', version => '0.10' } },
         resources   => {
             repository => {
                 type => 'git',

@@ -1,5 +1,9 @@
 Revision history for URL::Check
 
+0.10   Wed Dec 16 10:50:00 2015 MANWAR
+       - Updated Copyright year information.
+       - Tidied up pod document in general.
+
 0.09   Mon Nov 30 11:00:00 2015 MANWAR
        - Earlier fix didn't resolve the issue, so one more attempt to resolve it,
          using module Capture::Tiny.
