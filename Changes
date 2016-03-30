@@ -1,5 +1,10 @@
 Revision history for URL::Check
 
+0.11   Wed Mar 30 16:15:00 2016 MANWAR
+       - Added test scripts (t/manifest.t, t/meta-json.t and t/meta-yml.t).
+       - Added MANIFEST.SKIP file.
+       - Updated copyright year information.
+
 0.10   Wed Dec 16 10:50:00 2015 MANWAR
        - Updated Copyright year information.
        - Tidied up pod document in general.

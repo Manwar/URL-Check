@@ -1,6 +1,6 @@
 package URL::Check;
 
-$URL::Check::VERSION   = '0.10';
+$URL::Check::VERSION   = '0.11';
 $URL::Check::AUTHORITY = 'cpan:ALEXMASS';
 
 =head1 NAME
@@ -9,7 +9,7 @@ URL::Check - Check a list of URL and respond accordingly.
 
 =head1 VERSION
 
-Version 0.10
+Version 0.11
 
 =cut
 
@@ -300,7 +300,7 @@ L<http://search.cpan.org/dist/URL-Check/>
 
 =head1 LICENSE AND COPYRIGHT
 
-Copyright (C) 2011 - 2015 Alexandre Masselot.
+Copyright (C) 2011 - 2016 Alexandre Masselot.
 
 This program is free software; you can redistribute it and/or modify it under the
 terms of either: the GNU General Public License as published by the Free Software
